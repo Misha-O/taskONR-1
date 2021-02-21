@@ -1,32 +1,60 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <PersistentNavbar />
+    <v-row>
+      <v-col cols="1">
+        <v-navigation-drawer
+          class="mt-10"
+          mini-variant
+          color="indigo darken-3"
+          permanent
+        >
+          <v-list nav dense>
+            <v-list-item>
+              <v-list-item-icon style="cursor:pointer;">
+                <v-icon dark>mdi-pin</v-icon>
+              </v-list-item-icon>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-icon style="cursor:pointer;">
+                <v-icon dark>mdi-chart-bar</v-icon>
+              </v-list-item-icon>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-icon style="cursor:pointer;">
+                <v-icon dark>mdi-email</v-icon>
+              </v-list-item-icon>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-icon style="cursor:pointer;">
+                <v-icon dark>mdi-shape</v-icon>
+              </v-list-item-icon>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-icon style="cursor:pointer;">
+                <v-icon dark>mdi-file-refresh-outline</v-icon>
+              </v-list-item-icon>
+            </v-list-item>
+          </v-list>
+        </v-navigation-drawer>
+      </v-col>
+      <v-col cols="11">
+        <v-main>
+          <router-view></router-view>
+        </v-main>
+      </v-col>
+    </v-row>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import PersistentNavbar from "@/components/PersistentNavbar";
 
-#nav {
-  padding: 30px;
-}
+export default {
+  name: "App",
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  components: {
+    PersistentNavbar,
+  },
+};
+</script>
